@@ -47,6 +47,9 @@ const runAction = async () => {
     await cancelAction();
   }
 
+  console.log("Core:", core);
+  console.log("preview_url_regexp:", core.getInput("preview_url_regexp"));
+  console.log("Comment:", comment);
   const preview_url_regexp = new RegExp(core.getInput("preview_url_regexp"));
   const regex_matches = comment.body.match(preview_url_regexp);
 
