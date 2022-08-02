@@ -56,7 +56,7 @@ const runAction = async () => {
         await cancelAction();
     }
 
-    const restOfString = comment.body.substring(matchFound + 14);
+    const restOfString = comment.body.substring(matchFound + 15);
     const endingBracket = restOfString.indexOf(')');
 
     const vercel_preview_url = restOfString.substring(0, endingBracket);
