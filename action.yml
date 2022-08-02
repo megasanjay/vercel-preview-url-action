@@ -1,5 +1,5 @@
 name: 'Capture Vercel Preview URL'
-author: 'Aaron Imming <aaim@protonmail.com>'
+author: 'Sanjay Soundarajan <contact@sanjaysoundarajan.dev>'
 description: 'Capture a Vercel preview URL and feed it into your next GitHub action.'
 branding:
     icon: 'triangle'
@@ -13,10 +13,6 @@ inputs:
         description: 'GitHub actions token to cancel the action in case preview URL could not be found. If not specified, the action will explicitly fail.'
         required: false
         default: ''
-    preview_url_regexp:
-        description: 'Regular expression pattern to capture the preview URL. Ensure first capture group captures the preview URL.'
-        required: false
-        default: '\[Visit Preview\]\((.*.sx)\)' # Do use single quotes, do NOT use delimiters.
     vercel_bot_name:
         description: 'The name of the Vercel account commenting on pull requests.'
         required: false
