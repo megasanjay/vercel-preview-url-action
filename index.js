@@ -47,7 +47,6 @@ const runAction = async () => {
         await cancelAction();
     }
 
-    const preview_url_regexp = new RegExp(core.getInput('preview_url_regexp'));
     const matchFound = comment.body.search('[Visit Preview](');
 
     if (matchFound === -1) {
@@ -67,10 +66,8 @@ const runAction = async () => {
         core.setOutput('vercel_preview_url', vercel_preview_url);
         process.exit(0);
     } else {
-        console.log(
-            'The regular expression is in an invalid format. Please ensure the first capture group caputures the preview URL.'
-        );
-        process.exit(1);
+        console.log('No preview URL found in comment body. Cancelling action.');
+        await cancelAction();
     }
 };
 
