@@ -47,7 +47,7 @@ const runAction = async () => {
         await cancelAction();
     }
 
-    const matchFound = comment.body.search('[Visit Preview](');
+    const matchFound = comment.body.search('Visit Preview');
 
     if (matchFound === -1) {
         console.log("Unable to find a preview URL in comment's body.", {
@@ -56,7 +56,7 @@ const runAction = async () => {
         await cancelAction();
     }
 
-    const restOfString = comment.body.substring(matchFound + 17);
+    const restOfString = comment.body.substring(matchFound + 14);
     const endingBracket = restOfString.indexOf(')');
 
     const vercel_preview_url = restOfString.substring(0, endingBracket);
