@@ -48,16 +48,19 @@ const runAction = async () => {
     }
 
     const preview_url_regexp = new RegExp(core.getInput('preview_url_regexp'));
-    const regex_matches = comment.body.match(preview_url_regexp);
+    const matchFound = comment.body.search('[Visit Preview](');
 
-    if (!regex_matches) {
+    if (matchFound === -1) {
         console.log("Unable to find a preview URL in comment's body.", {
             comment: comment.body,
         });
         await cancelAction();
     }
 
-    const vercel_preview_url = regex_matches[1];
+    const restOfString = comment.body.substring(matchFound + 17);
+    const endingBracket = restOfString.indexOf(')');
+
+    const vercel_preview_url = restOfString.substring(0, endingBracket);
 
     if (vercel_preview_url) {
         console.log('Found preview URL.', { vercel_preview_url });
